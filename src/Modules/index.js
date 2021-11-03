@@ -1,20 +1,15 @@
-import { combineReducers } from "redux";
-import { all } from "redux-saga/effects";
-
-//watcher saga -> actions -> worker saga
-// import loading from "./loading";
-import { enableES5 } from "immer";
+import { enableES5 } from 'immer';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import list from '../Features/List/listSlice';
 
 enableES5();
 
 const rootReducer = combineReducers({
+  list,
 });
 
-// export default rootReducer;
-export default rootReducer;
+const store = configureStore({
+  reducer: rootReducer,
+});
 
-//wathcer saga
-export function* rootSaga() {
-  yield all([
-  ]);
-}
+export default store;
